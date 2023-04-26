@@ -2,6 +2,8 @@ package com.example.demo;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -26,5 +28,16 @@ public class AuthService {
         return restTemplate.postForObject(
                 "https://{yourDomain}/oauth/token",
                 formEntity, String.class);
+    }
+
+    public ResponseEntity<String> getUserInfo(String token) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", token);
+
+        HttpEntity<String> formEntity = new HttpEntity<>("", headers);
+
+        return restTemplate.exchange("https://dev-i3x2srsmxtyl8q7p.us.auth0.com/userinfo", HttpMethod.GET, formEntity,
+                String.class);
     }
 }
