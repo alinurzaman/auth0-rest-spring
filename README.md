@@ -8,6 +8,8 @@ Simple Integration Auth0 and Spring Boot with REST API.
 
 ## API
 - Login API
+- Get User Info API
 
 ## Endpoints
 - ``http://localhost:8080/auth/login``
+- ``http://localhost:8080/auth/user-info``
