@@ -37,7 +37,7 @@ public class AuthService {
 
         HttpEntity<String> formEntity = new HttpEntity<>("", headers);
 
-        return restTemplate.exchange("https://dev-i3x2srsmxtyl8q7p.us.auth0.com/userinfo", HttpMethod.GET, formEntity,
+        return restTemplate.exchange("https://{yourDomain}/userinfo", HttpMethod.GET, formEntity,
                 String.class);
     }
 }
